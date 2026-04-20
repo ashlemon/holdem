@@ -1,0 +1,17 @@
+{
+  "name": "holdem-client",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cocos Creator 3.8.8 + TypeScript Texas Hold'em H5 client scaffold",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "fetch:assets": "bash scripts/fetch-assets.sh"
+  },
+  "dependencies": {
+    "@discord/embedded-app-sdk": "2.4.1",
+    "protobufjs": "8.0.1"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  }
+}
