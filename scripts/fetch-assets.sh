@@ -16,7 +16,7 @@ BASE_URL="https://upload.wikimedia.org/wikipedia/commons"
 for suit in "${SUITS[@]}"; do
   for rank in "${RANKS[@]}"; do
     file_name="${rank}${suit}.svg"
-    # 示例路径基于公开 SVG cards 项目镜像，具体 hash 子目录可能变化。
+    # Wikimedia 使用 hash 分桶目录（如 8/8a/），实际目录可能变化，失败时请按注释调整。
     url="$BASE_URL/8/8a/${file_name}"
     target="$OUT_DIR/$file_name"
     echo "Downloading $file_name"

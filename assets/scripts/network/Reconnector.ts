@@ -61,6 +61,7 @@ export class Reconnector {
   }
 
   private getDelayMs(attempt: number): number {
+    // 指数退避：2^attempt 秒，最大 10 秒。
     return Math.min(2 ** attempt * 1000, 10000);
   }
 
