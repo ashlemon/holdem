@@ -1,0 +1,7 @@
+{
+  "appVersion": "0.1.0",
+  "wsUrl": "wss://example.com/ws",
+  "heartbeatIntervalMs": 5000,
+  "heartbeatTimeoutMs": 15000,
+  "reconnectMaxAttempts": 10
+}
