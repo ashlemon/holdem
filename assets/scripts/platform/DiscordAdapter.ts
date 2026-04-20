@@ -17,7 +17,11 @@ export class DiscordAdapter implements IPlatformAdapter {
     if (!SDKCtor) {
       throw new Error('DiscordSDK unavailable');
     }
-    this.sdk = new SDKCtor(window.DISCORD_CLIENT_ID ?? 'DISCORD_CLIENT_ID');
+    const clientId = window.DISCORD_CLIENT_ID;
+    if (!clientId) {
+      throw new Error('DISCORD_CLIENT_ID is required in Discord Activity environment');
+    }
+    this.sdk = new SDKCtor(clientId);
     await this.sdk.ready?.();
   }
 

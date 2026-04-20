@@ -61,7 +61,7 @@ export class Reconnector {
   }
 
   private getDelayMs(attempt: number): number {
-    return Math.min(Math.pow(2, attempt) * 1000, 10000);
+    return Math.min(2 ** attempt * 1000, 10000);
   }
 
   private async sleep(ms: number): Promise<void> {

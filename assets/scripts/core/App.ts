@@ -91,15 +91,18 @@ export class App extends Component {
   }
 
   private async loadConfig(): Promise<AppConfig> {
-    return new Promise<AppConfig>((resolve) => {
+    return new Promise<AppConfig>((resolve, reject) => {
       resources.load('config/default', JsonAsset, (error, asset) => {
         if (error || !asset) {
-          Logger.warn('Load config failed, fallback to defaults.', error);
-          resolve({ wsUrl: 'wss://example.com/ws' });
+          reject(error ?? new Error('Load config/default failed'));
           return;
         }
         const json = asset.json as unknown as AppConfig;
-        resolve({ wsUrl: json.wsUrl ?? 'wss://example.com/ws' });
+        if (!json.wsUrl) {
+          reject(new Error('wsUrl is missing in config/default.json'));
+          return;
+        }
+        resolve({ wsUrl: json.wsUrl });
       });
     });
   }
